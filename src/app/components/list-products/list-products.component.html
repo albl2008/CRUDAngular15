@@ -1,45 +1,43 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <div *ngIf="!loading" class="container">
+  <div class="place-content-center">
   <div class="title">
     <h4>Listado de productos</h4>
-    <button type="button" class="btn btn-dark" routerLink="/add">
-      Agregar Producto
-    </button>
+    <button mat-raised-button color="primary" type="button" routerLink="/add" >Agregar Producto</button>
+          
   </div>
-  <table *ngIf="listProducts.length > 0" class="table table-hover">
+  <table *ngIf="listProducts.length > 0" class="table-auto border-separate border-spacing-2 border">
     <thead>
       <tr>
         <th scope="col">Nombre</th>
         <th scope="col">Descripcion</th>
         <th scope="col">Precio</th>
         <th scope="col">Stock</th>
-        <th scope="col"></th>
+        <th scope="col" class="hidden sm:table-cell">Tipo</th>
+        <th scope="col" class="hidden lg:table-cell">Publicar</th>
+        <th scope="col" class="hidden md:table-cell">Ocultar</th>
+        <th scope="col" class="hidden lg:table-cell">Vencimiento</th>
+        <th scope="col">Editar/Borrar</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of listProducts" class="table-primary">
+      <tr *ngFor="let item of listProducts" class="table-fixed">
         <td>{{ item.name }}</td>
         <td>{{ item.description }}</td>
         <td>{{ item.price | currency }}</td>
         <td>{{ item.stock }}</td>
+        <td class="hidden sm:table-cell">{{ item.type }}</td>
+        <td class="hidden lg:table-cell">{{ item.postOn }}</td>
+        <td class="hidden md:table-cell" *ngIf="item.hide == 1; else No">Si</td>
+        <ng-template #No><td class="hidden md:table-cell">No</td></ng-template>
+        <td class="hidden lg:table-cell">{{ item.dueDate }}</td>
         <td>
-          <button
-            type="button"
-            class="btn btn-dark btn-sm ms-2"
-            routerLink="/edit/{{ item.id }}"
-          >
-            Editar
-          </button>
-          <button
-            (click)="deleteProduct(item.id!)"
-            type="button"
-            class="btn btn-danger btn-sm ms-2"
-          >
-            Eliminar
-          </button>
+          <button style="margin-right: 0.4em;" mat-mini-fab color="primary" type="button" routerLink="/edit/{{ item.id }}" ><mat-icon>create</mat-icon></button>
+          <button mat-mini-fab color="warn" type="button" (click)="deleteProduct(item.id!)" ><mat-icon>delete</mat-icon></button>
         </td>
       </tr>
     </tbody>
   </table>
   <h5 *ngIf="listProducts.length == 0">No hay productos agregados</h5>
+</div>
 </div>

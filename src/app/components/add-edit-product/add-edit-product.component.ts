@@ -15,6 +15,7 @@ export class AddEditProductComponent implements OnInit {
   loading: boolean = false;
   id: number;
   operation: string = 'Agregar ';
+  postOn: string[] = ['MercadoLibre','Web','Marketplace','Clasificados']
 
   constructor(
     private fb: FormBuilder,
@@ -28,6 +29,11 @@ export class AddEditProductComponent implements OnInit {
       description: ['', Validators.required],
       price: [null, Validators.required],
       stock: [null, Validators.required],
+      type: ['', Validators.required],
+      obs: [''],
+      postOn:[''],
+      hide:[0],
+      dueDate:['']
     });
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
   }
@@ -49,8 +55,14 @@ export class AddEditProductComponent implements OnInit {
         description: data.description,
         price: data.price,
         stock: data.stock,
+        type: data.type,
+        obs: data.obs,
+        postOn: data.postOn,
+        hide: data.hide,
+        dueDate: data.dueDate
       });
     });
+    
   }
 
   addProduct() {
@@ -59,6 +71,11 @@ export class AddEditProductComponent implements OnInit {
       description: this.form.value.description,
       price: this.form.value.price,
       stock: this.form.value.stock,
+      type: this.form.value.type,
+      obs: this.form.value.obs,
+      postOn: this.form.value.postOn,
+      hide: this.form.value.hide,
+      dueDate: this.form.value.dueDate
     };
     this.loading = true;
     if (this.id !== 0) {

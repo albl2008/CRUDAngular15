@@ -16,6 +16,22 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { AddEditProductComponent } from './components/add-edit-product/add-edit-product.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -37,7 +53,17 @@ import { ProgressBarComponent } from './shared/progress-bar/progress-bar.compone
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })
