@@ -1,12 +1,12 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
 <div *ngIf="!loading" class="row mt-1 place-content-center">
-  <div class="w-72">
+  <div class="w-72 md:w-1/2 flex flex-row">
         <mat-card>
-            <mat-card-header>
+            <mat-card-header class="md:place-content-center">
                 <mat-card-title>{{ operation }} Producto</mat-card-title>
             </mat-card-header>
-            <mat-card-content><form [formGroup]="form" (ngSubmit)="addProduct()">
-                <mat-form-field appearance="fill">
+            <mat-card-content class="md:columns-2"><form [formGroup]="form" (ngSubmit)="addProduct()">
+                <mat-form-field class="basis-1/2" appearance="fill">
                   <mat-label>Nombre</mat-label>
                   <input formControlName="name" type="text" matInput>
                 </mat-form-field>
@@ -19,7 +19,7 @@
                   Campo <strong>requerido</strong>
                 </span>
               </p>
-              <mat-form-field appearance="fill">
+              <mat-form-field class="basis-1/2" appearance="fill">
                   <mat-label>Descripcion</mat-label>
                   <input formControlName="description" type="text" matInput>
                 </mat-form-field>
@@ -61,7 +61,7 @@
                   Campo <strong>requerido</strong>
                 </span>
                 </p>
-                <mat-form-field appearance="fill">
+                <mat-form-field class="" appearance="fill">
                   <mat-label>Seleccionar tipo</mat-label>
                   <mat-select formControlName="type" type="text">
                     <mat-option value="Almacen">Almacen</mat-option>
@@ -101,7 +101,7 @@
                   <textarea matInput formControlName="obs" type="text"></textarea>
                 </mat-form-field>
                 
-                <div class="columns-2">
+                <div class="columns-2 md:float-left">
                   <div class="">
                     <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Aceptar</button>
                   </div>
