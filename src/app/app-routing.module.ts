@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddEditProductComponent } from './components/add-edit-product/add-edit-product.component';
-import { ListProductsComponent } from './components/list-products/list-products.component';
+import {HomeComponent} from './components/home/home.component'
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', component: ListProductsComponent },
-  { path: 'add', component: AddEditProductComponent },
-  { path: 'edit/:id', component: AddEditProductComponent },
+  { path: '', component:HomeComponent},
+  { path: 'productlist', loadChildren:()=>import('../app/modules/list-product/list-product.module').then(mod=>mod.ListProductModule) },
+  { path: 'add', loadChildren:()=>import('../app/modules/add-edit-product/add-edit-product.module').then(mod=>mod.AddEditProductModule) },
+  { path: 'edit/:id', loadChildren:()=>import('../app/modules/add-edit-product/add-edit-product.module').then(mod=>mod.AddEditProductModule) },
   { path: '**', component: NotFoundComponent },
 ];
 

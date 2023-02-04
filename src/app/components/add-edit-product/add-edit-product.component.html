@@ -1,9 +1,9 @@
 <app-progress-bar *ngIf="loading"></app-progress-bar>
-<div *ngIf="!loading" class="row mt-1 place-content-center">
+<div *ngIf="!loading" class="row mt-2 place-content-center">
   <div class="w-72 md:w-1/2 flex flex-row">
-        <mat-card>
-            <mat-card-header class="md:place-content-center">
-                <mat-card-title>{{ operation }} Producto</mat-card-title>
+        <mat-card class="rounded">
+            <mat-card-header class="md:place-content-center bg-violet-900 mb-3">
+                <mat-card-title class="mb-3">{{ operation }} Producto</mat-card-title>
             </mat-card-header>
             <mat-card-content class="md:columns-2"><form [formGroup]="form" (ngSubmit)="addProduct()">
                 <mat-form-field class="basis-1/2" appearance="fill">

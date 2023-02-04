@@ -3,10 +3,12 @@
   <div class="place-content-center">
   <div class="title">
     <h4>Listado de productos</h4>
-    <button mat-raised-button color="primary" type="button" routerLink="/add" >Agregar Producto</button>
-          
+    <div class="grid grid-rows-2 mb-2">
+      <button mat-raised-button color="primary" type="button" routerLink="/add" >Agregar Producto</button>
+      <button class="mt-1" mat-raised-button color="warn" type="button" routerLink="/" >Volver</button>   
+  </div>   
   </div>
-  <table *ngIf="listProducts.length > 0" class="table-auto border-separate border-spacing-2 border">
+  <table *ngIf="listProducts.length > 0" class="table-auto border-separate border-spacing-2 bg-violet-900">
     <thead>
       <tr>
         <th scope="col">Nombre</th>
