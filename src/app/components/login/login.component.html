@@ -1,0 +1,47 @@
+<div class="row mt-2 place-content-center">
+  <div class="w-auto md:w-1/2 flex flex-row grid">
+        <mat-card class="rounded">
+            <mat-card-header class="md:place-content-center bg-violet-900 mb-3">
+                <mat-card-title class="mb-3">Login</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="md:columns-2"><form [formGroup]="form" (ngSubmit)="login()">
+                <mat-form-field class="basis-1/2" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input formControlName="email" type="text" matInput>
+                </mat-form-field>
+                <p><span
+                  *ngIf="
+                    form.get('email')?.hasError('required') &&
+                    form.get('email')?.touched
+                  "
+                >
+                  Campo <strong>requerido</strong>
+                </span>
+              </p>
+              <mat-form-field class="basis-1/2" appearance="fill">
+                  <mat-label>Password</mat-label>
+                  <input formControlName="password" type="text" matInput>
+                </mat-form-field>
+                <p>
+                <span
+                  *ngIf="
+                    form.get('password')?.hasError('required') &&
+                    form.get('password')?.touched
+                  "
+                >
+                  Campo <strong>requerido</strong>
+                </span>
+              </p>
+                <div class="columns-2 md:float-left">
+                  <div class="">
+                    <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Aceptar</button>
+                  </div>
+                  <div class="">
+                    <button mat-raised-button color="warn" type="button" routerLink="/">Volver</button>
+        
+                  </div>
+                </div>
+              </form></mat-card-content>
+          </mat-card>
+  </div>
+</div>

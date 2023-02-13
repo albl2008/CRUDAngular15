@@ -7,8 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Modulos
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+
 
 //Componentes
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -26,6 +27,10 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HomeComponent } from './components/home/home.component';
+import { ListUsersComponent } from './components/users/users.component';
+import { LoginComponent } from './components/login/login.component';
+import { InterceptorService } from './interceptors/interceptor.service';
+import { RegistryComponent } from './components/registry/registry.component';
 
 
 
@@ -43,6 +48,9 @@ import { HomeComponent } from './components/home/home.component';
     NotFoundComponent,
     ProgressBarComponent,
     HomeComponent,
+    ListUsersComponent,
+    LoginComponent,
+    RegistryComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +74,13 @@ import { HomeComponent } from './components/home/home.component';
     MatNativeDateModule
   ],
 
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

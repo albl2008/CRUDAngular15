@@ -1,0 +1,32 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container">
+  <div class="place-content-center">
+  <div class="title">
+    <h4>Listado de Usuarios</h4> 
+  </div>
+  <table *ngIf="listUsers.length > 0" class="table-auto border-separate border-spacing-2 bg-violet-900">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Email</th>
+        <th scope="col">Rol</th>
+        <th scope="col">Editar/Borrar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listUsers" class="table-fixed">
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.role }}</td>
+        <td>
+          <button style="margin-right: 0.4em;" mat-mini-fab color="primary" type="button" routerLink="/edit/{{ item.id }}" ><mat-icon>create</mat-icon></button>
+          <button mat-mini-fab color="warn" type="button" (click)="deleteUser(item.id!)" ><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 *ngIf="listUsers.length == 0">No hay usuarios agregados</h5>
+  
+    <button class="mt-1" mat-raised-button color="warn" type="button" routerLink="/" >Volver</button>     
+</div>
+</div>
