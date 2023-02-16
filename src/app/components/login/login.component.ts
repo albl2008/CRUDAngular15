@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
         window.localStorage.setItem("access",res.tokens.access.token)
         window.localStorage.setItem("refresh",res.tokens.refresh.token)
         window.localStorage.setItem("role",res.user.role)
+        window.localStorage.setItem("id",res.user.id)
       this.toastr.success(
         `Usuario ${user.email} logueado correctamente`,
         'Login'

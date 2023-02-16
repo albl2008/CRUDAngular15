@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/interfaces/product';
+import { Products } from 'src/app/interfaces/products';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./list-products.component.css'],
 })
 export class ListProductsComponent implements OnInit {
-  listProducts: Product[] = [];
+  listProducts: any;
   loading: boolean = false;
 
   constructor(
@@ -23,12 +24,13 @@ export class ListProductsComponent implements OnInit {
 
   getListProducts() {
     this.loading = true;
-    this._productService.getListProducts().subscribe((data: Product[]) => {
-      this.listProducts = data;
+    this._productService.getListProducts().subscribe((data: Products) => {
+      this.listProducts = data.results;
       this.loading = false;
+      console.log(data)
     });
   }
-  deleteProduct(id: number) {
+  deleteProduct(id: string) {
     this.loading = true;
     this._productService.deleteProduct(id).subscribe(() => {
       this.getListProducts();

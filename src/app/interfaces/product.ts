@@ -1,5 +1,6 @@
+
 export interface Product {
-    id?: number;
+    id?: string;
     name: string;
     description: string;
     price: number;
@@ -7,6 +8,6 @@ export interface Product {
     type: string;
     obs: string;
     postOn: [index:string];
-    hide: number;
+    hide: boolean;
     dueDate: string;
   }

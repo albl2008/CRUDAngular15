@@ -6,6 +6,10 @@ export const environment = {
     production: false,
     endpoint: 'http://localhost:3000/v1/',
   };
+  export const environment1 = {
+    production: false,
+    endpoint: 'http://localhost:3001/v1/',
+  };
   
   /*
    * For easier debugging in development mode, you can import the following file

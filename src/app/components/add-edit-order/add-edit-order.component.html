@@ -1,0 +1,100 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="row mt-2 place-content-center">
+  <div class="w-72 md:w-1/2 flex flex-row">
+        <mat-card class="rounded">
+            <mat-card-header class="md:place-content-center bg-violet-900 mb-3">
+                <mat-card-title class="mb-3">{{ operation }} Orden</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="md:columns-2"><form [formGroup]="form" (ngSubmit)="addOrder()">
+                <mat-form-field class="basis-1/2" appearance="fill">
+                  <mat-label>Cliente</mat-label>
+                  <input formControlName="client" type="text" matInput>
+                </mat-form-field>
+                <p><span
+                  *ngIf="
+                    form.get('client')?.hasError('required') &&
+                    form.get('client')?.touched
+                  "
+                >
+                  Campo <strong>requerido</strong>
+                </span>
+              </p>
+              <mat-form-field class="basis-1/2" appearance="fill">
+                  <mat-label>Descripcion</mat-label>
+                  <input formControlName="description" type="text" matInput>
+                </mat-form-field>
+                <p>
+                <span
+                  *ngIf="
+                    form.get('description')?.hasError('required') &&
+                    form.get('description')?.touched
+                  "
+                >
+                  Campo <strong>requerido</strong>
+                </span>
+              </p>
+              <mat-form-field appearance="fill">
+                  <mat-label>Total</mat-label>
+                  <input formControlName="total" type="number" matInput>
+                </mat-form-field>
+                <p>
+                <span
+                  *ngIf="
+                    form.get('total')?.hasError('required') &&
+                    form.get('total')?.touched
+                  "
+                >
+                  Campo <strong>requerido</strong>
+                </span>
+                </p>
+                <mat-form-field class="" appearance="fill">
+                  <mat-label>Forma de pago </mat-label>
+                  <mat-select formControlName="type" type="text">
+                    <mat-option value="Contado">Contado</mat-option>
+                    <mat-option value="Cheque">Cheque</mat-option>
+                    <mat-option value="Transferencia">Transferencia</mat-option>
+                    <mat-option value="Otros">Otros</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <p>
+                  <span
+                    *ngIf="
+                      form.get('type')?.hasError('required') &&
+                      form.get('type')?.touched
+                    "
+                  >
+                    Campo <strong>requerido</strong>
+                  </span>
+                  </p>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Productos:</mat-label>
+                    <mat-select formControlName="products" multiple>
+                      <mat-option *ngFor="let product of products" [value]="product._id">{{product.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+        
+                  <mat-form-field appearance="fill">
+                    <mat-label>Fecha de orden</mat-label>
+                    <input  formControlName="date" matInput [matDatepicker] ="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Observaciones</mat-label>
+                  <textarea matInput formControlName="obs" type="text"></textarea>
+                </mat-form-field>
+                
+                <div class="columns-2 md:float-left">
+                  <div class="">
+                    <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Aceptar</button>
+                  </div>
+                  <div class="">
+                    <button mat-raised-button color="warn" type="button" routerLink="/">Volver</button>
+        
+                  </div>
+                </div>
+              </form></mat-card-content>
+          </mat-card>
+  </div>
+</div>

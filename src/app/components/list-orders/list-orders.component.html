@@ -1,0 +1,40 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container">
+  <div class="place-content-center">
+  <div class="title">
+    <h4>Listado de Ordenes</h4>
+    <div class="grid grid-rows-2 mb-2">
+      <button mat-raised-button color="primary" type="button" routerLink="/addOrder" >Nueva Orden</button>
+      <button class="mt-1" mat-raised-button color="warn" type="button" routerLink="/" >Volver</button>   
+  </div>   
+  </div>
+  <table *ngIf="listOrders.length > 0" class="table-auto border-separate border-spacing-2 bg-violet-900">
+    <thead>
+      <tr>
+        <th scope="col">Cliebte</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Total</th>
+        <th scope="col" class="hidden sm:table-cell">Tipo</th>
+        <th scope="col" class="hidden lg:table-cell">Productos</th>
+        <th scope="col" class="hidden lg:table-cell">Fecha</th>
+        <th scope="col">Editar/Borrar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listOrders" class="table-fixed">
+        <td>{{ item.client }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.total | currency }}</td>
+        <td class="hidden sm:table-cell">{{ item.type }}</td>
+        <td class="hidden lg:table-cell">{{ item.products }}</td>
+        <td class="hidden lg:table-cell">{{ item.date }}</td>
+        <td>
+          <button style="margin-right: 0.4em;" mat-mini-fab color="primary" type="button" routerLink="/editOrder/{{ item.id! }}" ><mat-icon>create</mat-icon></button>
+          <button mat-mini-fab color="warn" type="button" (click)="deleteOrder(item.id!)" ><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 *ngIf="listOrders.length == 0">No hay ordenes agregadas</h5>
+</div>
+</div>

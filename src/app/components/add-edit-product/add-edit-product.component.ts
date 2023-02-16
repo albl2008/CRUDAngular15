@@ -13,7 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class AddEditProductComponent implements OnInit {
   form: FormGroup;
   loading: boolean = false;
-  id: number;
+  productId: string = ''
   operation: string = 'Agregar ';
   postOn: string[] = ['MercadoLibre','Web','Marketplace','Clasificados']
 
@@ -32,21 +32,24 @@ export class AddEditProductComponent implements OnInit {
       type: ['', Validators.required],
       obs: [''],
       postOn:[''],
-      hide:[0],
+      hide:[false],
       dueDate:['']
     });
-    this.id = Number(aRouter.snapshot.paramMap.get('id'));
+    this.productId = String(aRouter.snapshot.paramMap.get('id'));
   }
 
   ngOnInit(): void {
-    if (this.id != 0) {
-      //estamos editando
+    if (this.productId === 'null') {
+       //estamos agregando
+       console.log(this.productId)
+       this.operation = 'Agregar ';
+    } else if (this.productId != '') {
       this.operation = 'Editar ';
-      this.getProduct(this.id);
+      this.getProduct(this.productId);
     }
   }
 
-  getProduct(id: number) {
+  getProduct(id: string) {
     this.loading = true;
     this._productService.getProduct(id).subscribe((data: Product) => {
       this.loading = false;
@@ -78,10 +81,9 @@ export class AddEditProductComponent implements OnInit {
       dueDate: this.form.value.dueDate
     };
     this.loading = true;
-    if (this.id !== 0) {
+    if (this.productId !== 'null') {
       //editar
-      product.id = this.id;
-      this._productService.updateProduct(this.id, product).subscribe(() => {
+      this._productService.updateProduct(this.productId, product).subscribe(() => {
         this.toastr.info(
           `Producto ${product.name} actualizado correctamente`,
           'Actualizado'

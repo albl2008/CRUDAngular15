@@ -34,7 +34,7 @@
         <ng-template #No><td class="hidden md:table-cell">No</td></ng-template>
         <td class="hidden lg:table-cell">{{ item.dueDate }}</td>
         <td>
-          <button style="margin-right: 0.4em;" mat-mini-fab color="primary" type="button" routerLink="/edit/{{ item.id }}" ><mat-icon>create</mat-icon></button>
+          <button style="margin-right: 0.4em;" mat-mini-fab color="primary" type="button" routerLink="/edit/{{ item.id! }}" ><mat-icon>create</mat-icon></button>
           <button mat-mini-fab color="warn" type="button" (click)="deleteProduct(item.id!)" ><mat-icon>delete</mat-icon></button>
         </td>
       </tr>

@@ -31,6 +31,8 @@ import { ListUsersComponent } from './components/users/users.component';
 import { LoginComponent } from './components/login/login.component';
 import { InterceptorService } from './interceptors/interceptor.service';
 import { RegistryComponent } from './components/registry/registry.component';
+import { AddEditOrderComponent } from './components/add-edit-order/add-edit-order.component';
+import { ListOrdersComponent } from './components/list-orders/list-orders.component';
 
 
 
@@ -51,6 +53,8 @@ import { RegistryComponent } from './components/registry/registry.component';
     ListUsersComponent,
     LoginComponent,
     RegistryComponent,
+    AddEditOrderComponent,
+    ListOrdersComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../interfaces/product';
+import { Products } from '../interfaces/products';
+
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +15,13 @@ export class ProductService {
 
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
-    this.myApiUrl = 'api/productos/';
+    this.myApiUrl = 'products/';
   }
-  getListProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.myAppUrl + this.myApiUrl);
+  getListProducts(): Observable<Products> {
+    return this.http.get<Products>(this.myAppUrl + this.myApiUrl);
   }
 
-  deleteProduct(id: number): Observable<void> {
+  deleteProduct(id: string): Observable<void> {
     return this.http.delete<void>(this.myAppUrl + this.myApiUrl + id);
   }
 
@@ -27,11 +29,11 @@ export class ProductService {
     return this.http.post<void>(this.myAppUrl + this.myApiUrl, product);
   }
 
-  getProduct(id: number): Observable<Product> {
+  getProduct(id: string): Observable<Product> {
     return this.http.get<Product>(this.myAppUrl + this.myApiUrl + id);
   }
 
-  updateProduct(id: number, product: Product): Observable<void> {
-    return this.http.put<void>(this.myAppUrl + this.myApiUrl + id, product);
+  updateProduct(productId: string, product: Product): Observable<void> {
+    return this.http.patch<void>(this.myAppUrl + this.myApiUrl + productId, product);
   }
 }
