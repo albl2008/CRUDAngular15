@@ -33,6 +33,7 @@ export class ProductService {
     return this.http.get<Product>(this.myAppUrl + this.myApiUrl + id);
   }
 
+
   updateProduct(productId: string, product: Product): Observable<void> {
     return this.http.patch<void>(this.myAppUrl + this.myApiUrl + productId, product);
   }

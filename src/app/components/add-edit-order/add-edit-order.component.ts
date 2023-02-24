@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Order } from 'src/app/interfaces/order';
+import { Product } from 'src/app/interfaces/product';
 import { Skeleton } from 'src/app/interfaces/skeleton';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -75,6 +76,8 @@ export class AddEditOrderComponent implements OnInit {
     
   }
 
+ 
+
   addOrder() {
     const order: Order = {
       client: this.form.value.client,
@@ -85,6 +88,7 @@ export class AddEditOrderComponent implements OnInit {
       products: this.form.value.products,
       date: this.form.value.date
     };
+    
     this.loading = true;
     if (this.orderId !== 'null') {
       //editar

@@ -69,7 +69,7 @@
                   <mat-form-field appearance="fill">
                     <mat-label>Productos:</mat-label>
                     <mat-select formControlName="products" multiple>
-                      <mat-option *ngFor="let product of products" [value]="product._id">{{product.name}}</mat-option>
+                      <mat-option *ngFor="let product of products" [value]="product.id">{{product.name}}</mat-option>
                     </mat-select>
                   </mat-form-field>
         
@@ -90,7 +90,7 @@
                     <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Aceptar</button>
                   </div>
                   <div class="">
-                    <button mat-raised-button color="warn" type="button" routerLink="/">Volver</button>
+                    <button mat-raised-button color="warn" type="button" routerLink="/orderList">Volver</button>
         
                   </div>
                 </div>
