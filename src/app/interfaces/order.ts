@@ -5,6 +5,7 @@ export interface Order {
     total: number;
     type: string;
     obs: string;
-    products: [index:any];
+    products?: any[];
+    quantity?: any[];
     date: string;
   }

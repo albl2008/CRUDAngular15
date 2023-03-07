@@ -26,6 +26,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog'
 import { HomeComponent } from './components/home/home.component';
 import { ListUsersComponent } from './components/users/users.component';
 import { LoginComponent } from './components/login/login.component';
@@ -33,6 +34,7 @@ import { InterceptorService } from './interceptors/interceptor.service';
 import { RegistryComponent } from './components/registry/registry.component';
 import { AddEditOrderComponent } from './components/add-edit-order/add-edit-order.component';
 import { ListOrdersComponent } from './components/list-orders/list-orders.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 
 
@@ -55,6 +57,7 @@ import { ListOrdersComponent } from './components/list-orders/list-orders.compon
     RegistryComponent,
     AddEditOrderComponent,
     ListOrdersComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,8 @@ import { ListOrdersComponent } from './components/list-orders/list-orders.compon
     MatSelectModule,
     MatSlideToggleModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule
   ],
 
   providers: [

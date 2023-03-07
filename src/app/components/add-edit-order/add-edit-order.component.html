@@ -33,6 +33,9 @@
                   Campo <strong>requerido</strong>
                 </span>
               </p>
+
+              
+             
               <mat-form-field appearance="fill">
                   <mat-label>Total</mat-label>
                   <input formControlName="total" type="number" matInput>
@@ -47,6 +50,7 @@
                   Campo <strong>requerido</strong>
                 </span>
                 </p>
+                
                 <mat-form-field class="" appearance="fill">
                   <mat-label>Forma de pago </mat-label>
                   <mat-select formControlName="type" type="text">
@@ -67,24 +71,21 @@
                   </span>
                   </p>
                   <mat-form-field appearance="fill">
-                    <mat-label>Productos:</mat-label>
-                    <mat-select formControlName="products" multiple>
-                      <mat-option *ngFor="let product of products" [value]="product.id">{{product.name}}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-        
-                  <mat-form-field appearance="fill">
                     <mat-label>Fecha de orden</mat-label>
                     <input  formControlName="date" matInput [matDatepicker] ="picker">
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
+                  <button mat-raised-button color="warn" class="mb-3" type="button" (click)="openProductDialog()">Agregar Producto</button>
+                  
+                  <p *ngFor="let p of productsArray">{{p}}</p>
+                  <p *ngFor="let q of quantityArray">{{q}}</p>
                 <mat-form-field appearance="fill">
                   <mat-label>Observaciones</mat-label>
                   <textarea matInput formControlName="obs" type="text"></textarea>
                 </mat-form-field>
-                
+               
                 <div class="columns-2 md:float-left">
                   <div class="">
                     <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Aceptar</button>
@@ -94,7 +95,12 @@
         
                   </div>
                 </div>
-              </form></mat-card-content>
+              </form>
+              </mat-card-content>
           </mat-card>
+
+
   </div>
 </div>
+
+

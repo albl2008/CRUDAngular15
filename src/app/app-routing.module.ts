@@ -6,12 +6,14 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistryComponent } from './components/registry/registry.component';
 import { AuthGuard } from './shared/auth.guard';
 import { RoleGuard } from './shared/role.guard';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 
 const routes: Routes = [
   { path: '', component:HomeComponent, canActivate:[AuthGuard]},
   { path: 'registry', component:RegistryComponent},
   { path: 'login', component:LoginComponent},
+  { path: 'addProduct', component:AddProductComponent},
   { path: 'usersList', loadChildren:()=>import('../app/modules/users/users.module').then(mod=>mod.UsersModule), canActivate:[RoleGuard]},
   { path: 'orderList', loadChildren:()=>import('../app/modules/list-orders/list-orders.module').then(mod=>mod.ListOrdersModule), canActivate:[RoleGuard] },
   { path: 'addOrder', loadChildren:()=>import('../app/modules/add-edit-order/add-edit-order.module').then(mod=>mod.AddEditOrderModule), canActivate:[RoleGuard] },
